@@ -1,0 +1,354 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #05070a;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #05070a;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #05070a;
+  color: #f8fafc;
+  text-rendering: geometricPrecision;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(29, 155, 240, 0.35);
+  color: #ffffff;
+}
+
+@layer components {
+  .section-shell {
+    @apply relative grid min-h-[86vh] place-items-center overflow-hidden bg-[#101113] px-6 py-24 sm:px-8;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(29, 155, 240, 0.09), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 18%),
+      linear-gradient(180deg, #080b0f 0%, #151515 100%);
+  }
+
+  .hero-shell {
+    background:
+      radial-gradient(ellipse 74% 70% at 50% 45%, rgba(29, 155, 240, 0.12), rgba(29, 155, 240, 0.05) 44%, rgba(11, 16, 22, 0.08) 70%, transparent 100%),
+      linear-gradient(180deg, #070a0f 0%, #0d1218 46%, #101720 100%);
+  }
+
+  .section-after-hero {
+    background:
+      linear-gradient(180deg, #111820 0%, #0d1218 18%, #101113 100%);
+  }
+
+  .button-primary {
+    @apply relative inline-flex min-w-56 items-center justify-center gap-3 overflow-hidden border border-signal/60 bg-signal/10 px-8 py-3.5 text-xs font-black uppercase text-white shadow-[0_0_28px_rgba(29,155,240,0.18)] transition duration-300 hover:-translate-y-0.5 hover:border-pulse hover:bg-signal/20 hover:shadow-[0_0_44px_rgba(29,155,240,0.30)];
+  }
+
+  .button-ghost {
+    @apply relative inline-flex min-w-56 items-center justify-center gap-3 overflow-hidden border border-white/45 bg-white/[0.015] px-8 py-3.5 text-xs font-black uppercase text-slate-200 transition duration-300 hover:-translate-y-0.5 hover:border-signal/70 hover:bg-white/[0.04] hover:text-white;
+  }
+
+  .button-whatsapp {
+    @apply relative inline-flex min-w-64 items-center justify-center gap-3 overflow-hidden border border-emerald-300/45 bg-emerald-400/[0.09] px-9 py-4 text-xs font-black uppercase text-white shadow-[0_0_36px_rgba(16,185,129,0.18)] transition duration-300 hover:-translate-y-0.5 hover:border-emerald-200/70 hover:bg-emerald-400/[0.16] hover:shadow-[0_0_54px_rgba(16,185,129,0.30)];
+  }
+
+  .method-card {
+    @apply relative overflow-hidden border border-white/[0.09] bg-white/[0.025] p-6 text-left shadow-insetLine transition duration-300 hover:-translate-y-1 hover:border-signal/45 hover:bg-signal/[0.055] hover:shadow-[0_0_42px_rgba(29,155,240,0.12)];
+  }
+
+  .fit-line {
+    @apply flex items-center gap-5 border border-white/[0.09] bg-white/[0.025] px-6 py-5 text-left text-lg font-semibold text-slate-200 shadow-insetLine transition duration-300 hover:border-signal/40 hover:bg-signal/[0.045] hover:text-white;
+  }
+}
+
+.title-accent {
+  background: linear-gradient(90deg, transparent 0%, #1d9bf0 18%, #66c7ff 50%, #1d9bf0 82%, transparent 100%);
+  height: 3px;
+  position: relative;
+}
+
+.title-accent::before {
+  background: linear-gradient(180deg, rgba(102, 199, 255, 0.34), rgba(29, 155, 240, 0.10) 42%, transparent 100%);
+  content: "";
+  filter: blur(2px);
+  height: 32px;
+  left: 8%;
+  opacity: 0.85;
+  position: absolute;
+  top: 0;
+  width: 84%;
+}
+
+.title-accent::after {
+  animation: accentScan 3.4s ease-in-out infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+  content: "";
+  height: 100%;
+  left: 0;
+  opacity: 0.65;
+  position: absolute;
+  top: 0;
+  transform: translateX(-100%);
+  width: 38%;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  background: linear-gradient(90deg, transparent, #66c7ff, transparent);
+  bottom: -0.55rem;
+  content: "";
+  height: 1px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  transform: scaleX(0.35);
+  transition: opacity 180ms ease, transform 180ms ease;
+  width: 100%;
+}
+
+.nav-link:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@keyframes accentScan {
+  0%,
+  18% {
+    transform: translateX(-110%);
+  }
+
+  58%,
+  100% {
+    transform: translateX(265%);
+  }
+}
+
+.button-primary::before,
+.button-ghost::before,
+.button-whatsapp::before {
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  content: "";
+  height: 100%;
+  left: -85%;
+  position: absolute;
+  top: 0;
+  transform: skewX(-18deg);
+  transition: left 420ms ease;
+  width: 52%;
+}
+
+.button-primary:hover::before,
+.button-ghost:hover::before,
+.button-whatsapp:hover::before {
+  left: 135%;
+}
+
+.button-primary span,
+.button-ghost span,
+.button-whatsapp span {
+  position: relative;
+  z-index: 1;
+}
+
+.button-primary span:last-child,
+.button-ghost span:last-child,
+.button-whatsapp span:last-child {
+  color: #66c7ff;
+  transform: translateY(-1px);
+  transition: transform 220ms ease, color 220ms ease;
+}
+
+.button-primary:hover span:last-child,
+.button-ghost:hover span:last-child,
+.button-whatsapp:hover span:last-child {
+  color: #ffffff;
+  transform: translate(4px, -1px);
+}
+
+.button-whatsapp .button-whatsapp-orb {
+  background: #34d399;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.7);
+  height: 0.55rem;
+  width: 0.55rem;
+}
+
+.button-whatsapp span:last-child {
+  color: #6ee7b7;
+}
+
+.method-card::before {
+  background: linear-gradient(120deg, transparent, rgba(102, 199, 255, 0.16), transparent);
+  content: "";
+  height: 100%;
+  left: -80%;
+  position: absolute;
+  top: 0;
+  transform: skewX(-18deg);
+  transition: left 520ms ease;
+  width: 56%;
+}
+
+.method-card:hover::before {
+  left: 130%;
+}
+
+.method-card::after {
+  background: radial-gradient(circle, rgba(29, 155, 240, 0.22), transparent 62%);
+  bottom: -4rem;
+  content: "";
+  height: 8rem;
+  opacity: 0;
+  position: absolute;
+  right: -3rem;
+  transition: opacity 260ms ease;
+  width: 8rem;
+}
+
+.method-card:hover::after {
+  opacity: 1;
+}
+
+.method-index {
+  color: rgba(102, 199, 255, 0.72);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.method-dot {
+  background: #66c7ff;
+  border-radius: 999px;
+  box-shadow: 0 0 22px rgba(102, 199, 255, 0.65);
+  display: block;
+  height: 0.42rem;
+  opacity: 0.75;
+  transform: scale(0.8);
+  transition: transform 220ms ease, opacity 220ms ease;
+  width: 0.42rem;
+}
+
+.method-card:hover .method-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tc-logo {
+  display: block;
+  object-fit: contain;
+  user-select: none;
+}
+
+.hero-watermark {
+  filter: none;
+}
+
+.ambient {
+  filter: blur(4px);
+  pointer-events: none;
+  position: absolute;
+}
+
+.ambient-one {
+  background:
+    radial-gradient(ellipse at 50% 46%, rgba(29, 155, 240, 0.12), rgba(29, 155, 240, 0.045) 48%, transparent 78%),
+    linear-gradient(180deg, transparent 0%, rgba(102, 199, 255, 0.045) 48%, transparent 100%);
+  inset: 0;
+  transform: none;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .hero-watermark {
+    height: min(45rem, 72vh);
+    left: 49%;
+    max-width: none;
+    opacity: 0.042;
+    top: 6.75rem;
+    width: auto;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-watermark {
+    height: min(50rem, 76vh);
+    left: 48%;
+    opacity: 0.042;
+  }
+}
+
+.ambient-two {
+  background: radial-gradient(circle, rgba(102, 199, 255, 0.13), transparent 62%);
+  height: 30rem;
+  right: -8rem;
+  top: 10%;
+  width: 30rem;
+}
+
+.ambient-three {
+  background: radial-gradient(circle, rgba(29, 155, 240, 0.13), transparent 62%);
+  bottom: 8%;
+  height: 30rem;
+  left: -8rem;
+  width: 30rem;
+}
+
+@media (max-width: 640px) {
+  .section-shell {
+    min-height: auto;
+    padding-bottom: 5rem;
+    padding-top: 6rem;
+  }
+
+  .hero-shell {
+    min-height: 100svh;
+    padding-top: 7.25rem;
+  }
+
+  .hero-watermark {
+    height: 24rem;
+    left: 50%;
+    opacity: 0.032;
+    top: 8.25rem;
+  }
+
+  .button-primary,
+  .button-ghost,
+  .button-whatsapp {
+    min-width: min(100%, 19rem);
+    width: 100%;
+  }
+
+  .button-whatsapp {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
